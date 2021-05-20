@@ -12,6 +12,8 @@ $docker run
 (similar to Github)
 DEV========>REGISTRY==========>TEST/PROD
 Docker=====>Docker Hub========>Docker 
+### Install docker
+In Windows : HyperV and Container Windows feauture must be enabled.
 
 ### Create new project and open vs code
 mkdir hello-docker
