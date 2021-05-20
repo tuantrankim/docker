@@ -14,6 +14,7 @@ DEV========>REGISTRY==========>TEST/PROD
 Docker=====>Docker Hub========>Docker 
 ### Install docker
 In Windows : HyperV and Container Windows feauture must be enabled.
+WSL 2 installation is incomplete message: click on the link to update Linux kernel
 
 ### Create new project and open vs code
 mkdir hello-docker
