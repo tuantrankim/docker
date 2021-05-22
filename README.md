@@ -182,4 +182,9 @@ $ dpkg --list | more
 If a package install or not
 $ apt list -a nano
 
+Remove nano
+$ apt remove nano
+
+Install python
+$ apt install python
 ```
