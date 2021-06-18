@@ -50,7 +50,7 @@ CMD node app.js
 ~/hello-docker
 $docker build -t hello-docker .
 OR with tag
-$docker build -t tuantrankim/hello-docker:2 .
+$docker build -t tuantrankim/hello-docker:v1 .
 ```
 ### Push the image to docker hub
 ```
@@ -71,10 +71,18 @@ $docker images
 OR
 $docker image ls
 ```
-### Run the image
+### Run the image (docker run = docker container run
 ```
 docker run hello-docker
-docker run tuantrankim/hello-docker:2
+docker run tuantrankim/hello-docker:v1
+
+docker run -d --restart=always --name web -p 8000:8080 tuantrankim/hello-docker:v1
+-d: background running
+-p: port mapping
+
+docker run -it --name web -p 8000:8080 tuantrankim/hello-docker:v1
+-it: interactive mode
+
 ```
 
 ###
