@@ -45,22 +45,38 @@ WORKDIR /app
 CMD node app.js
 ```
   
-  Build or create an image
+###  Build or create an image
 ```
 ~/hello-docker
 $docker build -t hello-docker .
+OR with tag
+$docker build -t tuantrankim/hello-docker:2 .
+```
+### Push the image to docker hub
+```
+docker login --username=your_docker_user_name
+docker tag local-image:tagname new-repo:tagname
+docker push new-repo:tagname
+e.g.
+$docker login --username=tuantrankim
+$docker tag 14a9f0ebbf02 tuantrankim/hello-docker:v1
+
+e.g.
+docker push tuantrankim/hello-docker:v1
 ```
 
-  View list images
+ ### View list images
 ```
 $docker images
 OR
 $docker image ls
 ```
-Run the image
+### Run the image
 ```
 docker run hello-docker
+docker run tuantrankim/hello-docker:2
 ```
+
 ###
 ```
 $docker pull ubuntu
@@ -153,7 +169,7 @@ docker tag local-image:tagname new-repo:tagname
 docker push new-repo:tagname
 
 e.g.
-docker push tuantrankim/new-repo:tagname
+docker push tuantrankim/new-repo:2
 
 
 ```
