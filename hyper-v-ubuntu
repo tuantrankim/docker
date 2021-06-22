@@ -1,0 +1,31 @@
+Using Windows 10 Hyper-V
+
+1- Create virtual switch for internet access
+   Click on Virtual Switch Manager...
+   Add new virtual switch
+    Name: Internet connection for Hyper-V
+    Select: External network
+    Select: Current internet adapter e.g.: Qualcomm 802.11ac Wireless Adapter
+    
+2- Create New Virtual Machine.
+    Select the new Internet connection for Hyper-V
+    Or you can do later by going to Setting.. >> Add new network.. >> select Internet connection for Hyper-V
+    
+3- Enable Remote desktop to Ubuntu-Desktop
+$ sudo apt install xrdp
+   
+$ sudo systemctl enable --now xrdp
+$ sudo ufw allow from any to any port 3389 proto tcp
+
+View current Ip
+$ ip a
+Using Windows remote desktop to that IP
+
+4- Change hostname if need
+Using UI > Settings > About
+
+Using commands
+$ hostname
+$ sudo nano /etc/hostname
+$ sudo nano /etc/hosts
+$ sudo reboot
