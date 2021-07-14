@@ -244,7 +244,11 @@ $ docker build -t imsapi:local .
 $ docker run -d -it --restart=always -p 8080:8080 -p 43311:43311 --shm-size 2g imsapi:local
 
 ## Reset ubuntu password for wsl2 
+
 cmd> ubuntu config --default-user root
+
 cmd> ubuntu
+
 $ passwd
+
 New password
