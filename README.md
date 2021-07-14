@@ -188,3 +188,39 @@ $ apt remove nano
 Install python
 $ apt install python
 ```
+
+# Dockerfile expose port
+```
+FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
+WORKDIR /app
+EXPOSE 8080
+EXPOSE 44311
+
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
+WORKDIR /src
+COPY ["ImsAPI.csproj", "."]
+RUN dotnet restore "./ImsAPI.csproj"
+COPY . .
+WORKDIR "/src/."
+RUN dotnet build "ImsAPI.csproj" -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet publish "ImsAPI.csproj" -c Release -o /app/publish
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "ImsAPI.dll"]
+```
+
+## Build
+$ docker build -t imsapi:local .
+
+## Run
+$ docker run -d -it --restart=always -p 8080:8080 -p 43311:43311 --shm-size 2g imsapi:local
+
+## Reset ubuntu password for wsl2 
+cmd> ubuntu config --default-user root
+cmd> ubuntu
+$ passwd
+New password

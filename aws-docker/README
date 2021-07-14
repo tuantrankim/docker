@@ -1,0 +1,29 @@
+'''
+Get started with docker
+Docker deep dive
+Getting started with Kubernetes
+
+https://app.pluralsight.com/library/courses/docker-production-using-amazon-web-services/table-of-contents
+
+Docker in production using AWS
+
+install docker
+
+on Windows: update wsl 2 and install ubuntu version 2
+open ubuntu
+
+# sudo apt update
+# sudo apt upgrate
+
+Install jq: a utility to handy parsing json. This will be use in our build automation script
+
+# sudo apt install jq
+# sudo apt install docker-compose
+
+The sample application is running in Java
+# sudo apt install default-jre
+
+Install python3 if not existing
+
+# pip install ansible
+'''
