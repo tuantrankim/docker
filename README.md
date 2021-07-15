@@ -238,10 +238,10 @@ ENTRYPOINT ["dotnet", "ImsAPI.dll"]
 ```
 
 ## Build
-$ docker build -t imsapi:local .
+$ docker build -t imsapi:latest .
 
 ## Run
-$ docker run -d -it --restart=always -p 8080:8080 -p 43311:43311 --shm-size 2g imsapi:local
+$ docker run --name imsapi_test -d -it --restart=always -p 8080:8080 -p 43311:43311 --shm-size 2g imsapi:latest
 
 ## Reset ubuntu password for wsl2 
 
