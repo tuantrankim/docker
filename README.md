@@ -117,6 +117,16 @@ Uninstall nano
 
 ```
 
+## Reset ubuntu password for wsl2 
+
+cmd> ubuntu config --default-user root
+
+cmd> ubuntu
+
+$ passwd
+
+New password
+
 # LINUX
 ```
 
@@ -244,13 +254,38 @@ $ docker build -t tuantrankim/imsapi:latest .
 $ docker run --name imsapi_test -d -it --restart=always -p 8080:8080 -p 43311:43311 --shm-size 2g tuantrankim/imsapi:latest
 $ docker run -p 5000:80 -p 5001:443 -e ASPNETCORE_ENVIRONMENT="Development" --name tuantest_imsapi -d imsapi
 
+## Remove container 
 
-## Reset ubuntu password for wsl2 
+$ docker rm tuantest_imsapi
 
-cmd> ubuntu config --default-user root
+## Docker tag to create new docker image from existing
 
-cmd> ubuntu
+$ docker tag imsapi:latest tuantrankim/imsapi:latest
 
-$ passwd
+OR
 
-New password
+$ docker tag imsapi:latest tuantrankim/imsapi:1.0
+
+## Docker push
+
+$ docker push tuantrankim/imsapi:latest
+
+OR push all tag
+
+$ docker push --all-tags tuantrankim/imsapi
+
+## Docker-compose
+
+$docker-compose up -d
+
+## Docker-compose down 
+
+$docker-compose down
+
+## Docker-compose down and remove all images
+
+$docker-compose down --rmi all
+
+## Docker-compose down, remove volumes and all images
+
+$docker-compose down -v --rmi all
