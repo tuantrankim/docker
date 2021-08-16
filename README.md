@@ -289,3 +289,64 @@ $docker-compose down --rmi all
 ## Docker-compose down, remove volumes and all images
 
 $docker-compose down -v --rmi all
+
+## Docker volume path
+
+sudo cd /var/lib/docker/volumes
+
+## Docker-compose.yml
+```
+version: "3"
+services:
+  db:
+    image: postgres:10
+    environment:
+      - POSTGRES_USER=odoo
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_DB=postgres
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data/pgdata
+    ports:
+      - 15432:5432
+  web:
+    image: odoo:12.0
+    depends_on:
+      - db
+    volumes:
+      - odoo-web-data:/var/lib/odoo
+      - ./src:/mnt/extra-addons
+    ports:
+      - 8069:8069
+volumes:
+  odoo-db-data:
+  odoo-web-data:
+```
+
+```
+Volumes mapping explain
+Mapping by volumne name
+
+volumes:
+      - odoo-web-data:/var/lib/odoo
+
+      mapping a container folder to host odoo-web-data volume
+
+      volumes:
+        odoo-db-data:
+        odoo-web-data:
+
+      odoo-web-data volume is in host at /var/lib/docker/volumes/gostuffs-sync_odoo-web-data
+
+Mapping by folder path
+      - ./src:/mnt/extra-addons
+
+      /mnt/extra-addons: is container folder
+      ./src: is host folder relative path 
+
+Mapping read only path with "ro"
+
+  volumes:
+      - .:/settings:ro
+
+```
